@@ -1,0 +1,554 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,900;1,700&display=swap");
+@keyframes rainbow {
+    0% { color: #7d0c0c; } /*Indica el estilo que se debe aplicar al inicio de la animación (0% del tiempo total).*/
+    20% { color: rgb(143, 97, 11); } /*el color del texto cambiará a naranja cuando la animación esté al 20% de su duración total.*/
+    40% { color: rgb(32, 124, 32); }
+    60% { color: #0fa19a }
+    80% { color: rgb(48, 48, 134); }
+    100% { color: rgb(144, 23, 138); }
+}
+@keyframes typing { /*Para el efecto tipo máquina de escribir*/
+    from { width: 0; }
+    to { width: 100%; }
+}
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color:var(--terciary-color); } /*Borde del card*/
+}
+
+/*Variables*/
+:root {
+    --font-family: "Roboto", sans-serif;
+    --normal-font: 400;
+    --bold-font: 700;
+    --bolder-font: 900;
+    --bg-color: #e7f6ec; /*#fde9e1*/
+    --bg-color-rgb: 231, 246, 236; /* Color de fondo en formato RGB */
+    --primary-color: #32165c;
+    --secondary-color: #7d0c0c;
+    --terciary-color: #4e3b31;
+    --primary-shadow: #8b8eaf;
+    --secondary-shadow: #a17a69;
+    --terciary-shadow: rgba(139, 142, 175); /* Color de la sombra, ajusta según sea necesario */
+
+    --bottom-margin: 0.1rem; /*1 rem = 16 pixeles*/
+    --bottom-margin-2: 0.3rem;
+    --line-height: 1.5rem;
+    --transition: 0.3s;
+}
+html{
+    scroll-behavior: smooth; /*Cuando scroliemos la página va a ser despacio*/
+}
+
+
+
+/*CSS Resets*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta el tamaño del video para cubrir el área del contenedor */
+    z-index: -1; /* Coloca el video detrás del contenido principal */
+}
+/*BARRA DE NAVEGACIÓN todo lo de arriba*/
+header {
+    font-family: var(--font-family);
+    box-shadow: 0px 2px 85px 2px var(--bg-color);
+    background-color: rgba(var(--bg-color-rgb), 0.5); 
+    position: fixed; /* Fija el header en la parte superior */
+    top: 0;
+    left: 0;
+    width: 100%; /* Asegura que el header ocupe todo el ancho de la página */
+    z-index: 1000; /* Coloca el header encima de otros elementos */
+    border-top: 4px solid #731343; 
+ /*Añadir una línea morada en la parte superior */
+    border-bottom: 4px solid #731343;
+}
+/*AÑADIR UNA TIRA DE COLOR: otra forma
+header::before,
+header::after {
+    content: "";
+    display: block;
+    height: 5px; /*Altura de las tiras
+    background-color: #bcae91; /* Color cafecito
+    width: 100%; /* Ancho completo 
+    position: absolute;
+    left: 0;
+}
+header::after {
+    bottom: 0; /* Posiciona en la parte inferior 
+}*/
+/*Barra de navegación*/
+header nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.2rem 3rem;
+    background-color: rgba(var(--bg-color-rgb)); 
+    box-shadow: 0 3px 5px rgba(143, 97, 11, 0.1); /* Queda un sombreado en la parte de abajo */
+}
+nav h1{
+    font-family: Freestyle Script;
+    font-size: 50px;
+    text-shadow: 1px 5px 10px var(--primary-shadow); /*Degradado de colores*/
+    background: linear-gradient(45deg,  #e3bc0c, #af4261);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+header nav h1:hover {
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño de la imagen */
+    transition: transform 0.3s ease-in-out;
+}
+header nav.a{
+    transition: var(--transition); /*tarda 3 segundos en cambiar de color para que no sea tan brusco*/
+}
+header nav a:hover{
+    border-bottom: 2px solid var(--secondary-color); /*Aparece la palabraya como subrayada cada vez que colocamos el cursor ahí*/
+}
+header ul{
+    list-style-type: none;
+}
+header nav ul{
+    display: flex;
+    gap: 1.9rem;
+    font-weight: var(--bold-font);
+    font-family: Freestyle Script;
+    font-size: 30px;
+}
+header a{
+    text-decoration: none;
+    transition: color 0.3s;
+    animation: rainbow 10s infinite; /*Efecto de que cambia de color las palabras cada determinado tiempo*/
+}
+header a:hover{
+    color: var(--secondary-color);  /*No hay necesidad de especificar el color porque previamente ya lo definimos*/
+    transform: scale(1.05); 
+    transition: transform 0.7s ease-in-out;
+}
+/*Esconder botón de hamburguesa*/
+.burger-menu{
+    color: var(--terciary-color);
+    font-size: 2rem;
+    border: 0;
+    background-color: transparent; /*El icono es transparente*/
+    cursor: pointer; /*Le pongo cursor, se vuelve manita el maouse*/
+    display: none; /*NO QUIERO QUE SE VEA*/
+}
+
+
+
+/*INFORMACIÓN*/
+main{
+    margin-top: 60px;
+    padding-top: 1.9rem;
+    font-family: var(--font-family);
+    background-clip: url('images/FondoEspacial.mp4');
+    /*background-image: url('images/fondo_adjusted.jpeg');*/
+    /*background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.99)), url('images/fondo_adjusted.jpeg');  Oscurece ligeramente la imagen de fondo*/
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center; /* Centra la imagen en el fondo */
+}
+
+/*1RA PARTE - FOTO y ABOUT*/
+.hero{
+    display: flex;
+    align-items: center;
+    justify-content: center; /*Acomodamos el contenido del about para que quede a la derecha*/
+    gap: 2.5rem;
+    max-width: 68.75rem; 
+    margin: auto;
+}
+.min-img{
+    margin-top: 6px;
+    margin-bottom: 6px;
+    height: 23.4rem;
+    border-radius: 200px;
+    border: 5px solid rgba(78, 59, 49, 0.5); /* Borde con color específico */
+    box-shadow: 0 4px 8px rgba(var(--bg-color-rgb) 0.7); /* Sombra alrededor de la imagen */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transiciones suaves */
+}
+/* Efecto al pasar el cursor sobre la imagen */
+.min-img:hover {
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño de la imagen */
+    box-shadow: 0 8px 16px rgba(175, 66, 97, 0.5); /* Sombra más pronunciada */
+}
+/* Contenedor de texto para bio y CV */
+.text-container {
+    display: flex;
+    flex-direction: column; /* Coloca bio y CV en columna */
+    align-items: center; /* Centra verticalmente los elementos dentro de la columna */
+    gap: 1.2rem; /* Espacio entre bio y CV */
+}
+.container {
+    display: flex;
+    align-items: center; /* Centra verticalmente los elementos dentro de la columna */
+    gap: 2rem; /* Espacio entre bio y CV */
+}
+main .bio{
+    text-align: left;
+    width: 22rem;
+    padding: 0.625rem;
+    background-color: rgba(var(--bg-color-rgb), 0.85); /* 89% de transparencia */
+    border-radius: 15px;
+    box-shadow: 0px 2px 15px 2px var(--terciary-shadow); /* Genera una sombrita alrededor de la descripción (About) */
+    border-right: 3px solid var(--terciary-color); /* Borde derecho*/
+    /* animation: blink-caret 3s step-end infinite; Efecto de parpadeo del cursor */
+}
+.bio h2 {
+    margin-bottom: var(--bottom-margin); /* Hace un espacio entre el subtítulo y el texto de bio */
+    border-bottom: 3px solid #5a0d6d;
+    background-color: #cdc4b2; /* Color de fondo cafesito */
+    padding: 0.625rem; /* Ajusta el padding según sea necesario */
+    width: calc(100% + 1.25rem); /* Ajusta el ancho para cubrir los bordes redondeados */
+    margin-left: -0.625rem; /* Ajusta el margen izquierdo para cubrir los bordes redondeados */
+    margin-top: -0.625rem; /* Ajusta el margen superior para que el h2 esté en la parte superior de la tarjeta */
+    border-radius: 15px 15px 0 0; /* Solo redondea la parte superior si es necesario */
+    box-sizing: border-box; /* Asegúrate de que el padding esté incluido en el ancho total */
+    position: relative;
+    z-index: 1;
+    -webkit-text-stroke: 1px #af4261; /* Sombreado de las palabras */
+}
+.bio p {
+    line-height: var(--line-height); /* Interlineado entre palabra y palabra */
+    padding: 0.2rem 0;
+    text-align: center;
+}
+.CV{
+    font-family: arial;
+    font-size: 18px;
+    text-align: center;
+    color: white;
+    background-color: #c66b85;
+    box-shadow: 0px 4px 15px 4px var(--terciary-shadow);
+    border-right: 3px solid var(--terciary-color);
+    border-bottom: 3px solid var(--terciary-color);
+    /* animation: blink-caret 3s step-end infinite;*/
+    border-radius: 15px;
+    width: 15rem; /*Largo del cubito*/
+    padding: 14px; /*ancho del cubito*/
+}
+.CV:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 8px 16px rgba(175, 66, 97, 0.5); 
+}
+.RedesSociales{
+    z-index: 9999;
+    align-items: right;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    right: 2%;
+    bottom: 27%;
+}
+.sociocon{
+    max-width: 6rem;
+    max-height: 6rem;
+}
+.sociocon:hover {
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño de la imagen */
+}
+
+/*2DA PARTE - MORE_ABOUT - MY BIO*/
+.more-about{
+    align-items: center;
+}
+main .more-about{
+    margin: 30px; /* Separación de todo el card de more about con las orillas de la página y el resto de la info*/
+    padding: 0px 15px 15px 15px; /* Separación de la información dentro del card con los bordes del card, more about*/
+    text-align: center;
+    max-width: 71rem;
+    background-color: rgba(var(--bg-color-rgb), 0.85); 
+    border-radius: 15px;
+    box-shadow: 0px 2px 15px 2px var(--terciary-shadow); /* Genera una sombrita alrededor de la descripción (About) */
+    border-right: 3px solid var(--terciary-color); /* Borde derecho*/
+    /* animation: blink-caret 3s step-end infinite; Efecto de parpadeo del cursor */
+}
+.more-about h2{
+    max-width: 71rem;
+    margin-bottom: var(--bottom-margin);
+    border-bottom: 3px solid #5a0d6d;/*Línea moradita abajito de MY BIO*/
+    text-align: center;
+    background-color: #cdc4b2; /* Color de fondo cafesito */
+    padding: 0.625rem; /* Ajusta el padding según sea necesario */
+    width: calc(100% + 1.91rem); /* Ajusta el ancho para cubrir los bordes redondeados */
+    margin-left: -0.95rem; /* Ajusta el margen izquierdo para cubrir los bordes redondeados */
+    margin-top: -0.625rem; /* Ajusta el margen superior para que el h2 esté en la parte superior de la tarjeta */
+    border-radius: 15px 15px 0 0; /* Solo redondea la parte superior si es necesario */
+    box-sizing: border-box; /* Asegúrate de que el padding esté incluido en el ancho total */
+    position: relative;
+    z-index: 1;
+    -webkit-text-stroke: 1px #af4261;
+}
+.more-about p{
+    padding-top: 10px;
+    max-width: 71rem;
+    line-height: var(--line-height);
+}
+
+/*3RA PARTE - SKILLS*/
+.skills{
+    max-width: 53rem;
+    margin: auto;
+    text-align: center;
+    margin-top: 2.5rem;
+}
+.skilss-header{
+    margin-bottom: 1rem;
+}
+.skills-wrapper img{
+    padding: 1.25rem;
+}
+.skills h2{
+    margin-top: 4rem;
+    padding: 0.5rem;
+    background-color: #cdc4b2; /* Color de fondo cafesito */
+    border-radius: 15px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0px 2px 15px 2px var(--terciary-shadow); /* Genera una sombrita alrededor de la descripción (About) */
+    border-bottom: 3px solid #5a0d6d;
+    border-right: 3px solid var(--terciary-color); /* Borde derecho*/
+    /* animation: blink-caret 3s step-end infinite; Efecto de parpadeo del cursor */
+    -webkit-text-stroke: 1px #af4261;
+}
+.icon{
+    width: 120px; /*Todos los íconos tienen el mismo tamaño*/
+    height: 120px;
+}
+.icon-card{
+    background-color: rgba(var(--bg-color-rgb), 0.89);
+    box-shadow: 0 3px 10px var(--secondary-shadow);
+    border-radius: 11px;
+    padding: 20px;
+    margin: 10px; 
+}
+.icon-card:hover { /*Se hace más grande cuando colocamos el cursor en ellas*/
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px var(--secondary-shadow);
+    transition: transform 0.3s, box-shadow 0.3s; /*Tiempo que tarda la animación*/
+}
+
+
+/*4TA PARTE - PROJECTS*/
+.projects{
+    max-width: 53em;
+    margin: auto;
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+.projects h2 {
+    margin-bottom: 1.5rem;
+    padding: 0.5rem;
+    background-color: #cdc4b2; /* Color de fondo cafesito */
+    border-radius: 15px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0px 2px 15px 2px var(--terciary-shadow); /* Genera una sombrita alrededor de la descripción (About) */
+    border-bottom: 3px solid #5a0d6d;;
+    border-right: 3px solid var(--terciary-color); /* Borde derecho */
+    /* animation: blink-caret 3s step-end infinite; /* Efecto de parpadeo del cursor */
+    -webkit-text-stroke: 1px #af4261;
+}
+.projects-container {
+    display: flex;
+    flex-wrap: wrap; /* Para que las cards se ajusten y se envuelvan en líneas nuevas si es necesario */
+    justify-content: center; /* Centra las cards horizontalmente */
+    gap: 10px; /* Espacio entre las cards */
+    width: 100%; /* Asegúrate de que ocupe todo el ancho disponible */
+    box-sizing: border-box;
+}
+.project-card {
+    background-color: rgba(var(--bg-color-rgb), 0.85);
+    box-shadow: 0px 2px 15px 2px var(--secondary-shadow);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    box-sizing: border-box; /* Incluye el padding y border en el ancho y alto de la card */
+}
+.project-card:hover { /*Se hace más grande cuando colocamos el cursor en ellas*/
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px var(--secondary-shadow);
+    transition: transform 0.3s, box-shadow 0.3s; /*Tiempo que tarda la animación*/
+}
+.project-title {
+    margin-bottom: var(--bottom-margin);
+    text-align: center;
+}
+.project-pic {
+    width: 100%; /* Haz que las imágenes ocupen todo el ancho del contenedor */
+    height: auto; /* Mantén la proporción de la imagen */
+    border-radius: 10px;
+    max-height: 280px;
+}
+.project-details {
+    margin-bottom: var(--bottom-margin);
+    text-align: center; /* Asegúrate de que el texto esté centrado */
+}
+.projects-container p {
+    padding: 0.4rem;
+}
+
+
+.scroll-up{
+    position: fixed;
+    right: 3.8%;
+    bottom: 7%;
+    cursor: pointer;
+}
+.scroll-up img{
+    border-radius: 200px;
+    max-width: 3rem;
+}
+
+
+/*Frase Favorita*/
+footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0.4rem 3rem;
+    background-color: rgba(var(--bg-color-rgb)); 
+    border-top: 4px solid #731343; 
+ /*Añadir una línea morada en la parte superior */
+    border-bottom: 4px solid #731343;
+    z-index: 99999;
+}
+.Frase{
+    text-align: right;
+    font-size: 20px;
+}
+
+
+/*FOR RESPONSIVENESS - Adapta en automático el contenido al tamaño de la ventana*/
+
+/*Características de mi página cuando esté pequeñita*/
+@media screen and (max-width: 720px) {
+    /* Siempre y cuando el ancho de la pantalla sea de máximo 720px */
+    nav {
+        padding: 1.5rem 1rem; /* Reducimos el tamaño de la barra de navegación */
+    }
+    nav ul {
+        border-end-end-radius: 37px;
+        position: fixed;
+        background-color: var(--bg-color);
+        flex-direction: column;
+        top: 4.5rem; /* Posicionamos el menú en la parte superior, que tanto va a bajar cuando le demos click*/
+        left: 0; /* Aseguramos que el menú ocupe todo el ancho de la pantalla */
+        width: 50%; /* Ajustamos el ancho para que ocupe un cuarto de la pantalla */
+        text-align: center;
+        transform: translateY(-140%); /* Ocultamos el menú fuera de la pantalla en el eje y */
+        transition: transform 0.5s ease-in;
+    }
+    nav ul li {
+        margin: 2px;
+    }
+    .burger-menu {
+        display: block;
+    }
+    nav ul.show {
+        transform: translateY(0); /* Mostramos el menú cuando la clase 'show' está presente */
+    }
+    .hero {
+        margin-top: 1rem;
+        flex-direction: column;
+        gap: 0;
+    }
+    .hero img {
+        max-height: 15rem;
+        max-width: 15rem;
+    }
+    .bio {
+        margin-top: 2rem;
+        width: 20.5rem;
+    }
+    .RedesSociales{
+        z-index: 9999;
+        align-items: right;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        right: 3%;
+        top: 46.2%;
+    }
+    .RedesSociales img{
+        max-width: 3.5rem;
+        max-height: 3.5rem;
+    }
+    .more-about {
+        margin-top: 2rem;
+        padding: 1rem 3.5rem;
+    }
+    .more-about h2 {
+        text-align: center;
+    }
+    .more-about {
+        text-align: justify;
+    }
+    .icon {
+        width: 5.875rem;
+        height: 5.875rem;
+    }
+    .projects{
+        align-items: center;
+    }
+    .projects-container {
+        flex-direction: column;
+        width: 20.875rem;
+    }
+    .scroll-up{
+        z-index: 9999;
+        align-items: right;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        right: 3.4%;
+        bottom: 11.4%;
+    }
+}
+@media screen and (max-width: 420px){
+    .hero.img{
+        max-height: 15rem;
+        max-width: 15rem;
+    }
+    .bio{
+        width: 18.3rem;
+        height: 17.5rem;
+    } 
+    .RedesSociales{
+        z-index: 9999;
+        align-items: right;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        right: 3%;
+        top: 46.2%;
+    }
+    .RedesSociales img{
+        max-width: 3.5rem;
+        max-height: 3.5rem;
+    }
+    .project-container{
+        width: 17.875rem;
+    }
+    .scroll-up{
+        z-index: 9999;
+        align-items: right;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        right: 3.4%;
+        bottom: 11.4%;
+    } 
+}

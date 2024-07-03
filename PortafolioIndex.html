@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="icons/image.png">
+    <link href="PORTAFOLIOestilos.css" rel="stylesheet">
+        <!-- Animaciones CSS CDN -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <title>Gabriela Vidales | Portafolio Web</title>
+</head>
+<body>
+    <!--Barra de navegación-->
+    <header>
+        <nav>
+            <h1>Gabriela Vidales</h1>
+            <ul>
+                <li><a href="#about" class="nav-link">About</a></li> <!--Cuando le demos clic en esa palabra, nos llevará a la sección de nuestra página que tenga ese nombre-->
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="burger-menu" id="burger-menu">
+                <ion-icon class="bars" name="menu-outline"></ion-icon>
+            </button>
+        </nav>
+
+    </header>
+    <!--About me-->
+    <main>
+        <section class="hero" id="about">
+            <div class="container" id="-container">
+                <img src="images/min.jpg" alt="min" class="min-img" loading="lazy">
+                <div class="text-container" id="text-container">
+                    <div class="bio animate__animated animate__shakeX"> <!-- Especificamos el tipo de animación-->
+                        <h2 class="bio-title">About me</h2>
+                        <p class="bio-text">Dedicated and inquisitive Physics Engineering student, 
+                        committed to enhancing quality of life
+                        through the integration of science and technology. </p>
+                    </div>
+                    <div class="CV" id="CV">
+                        <h3>CV Download</h3>
+                    </div>
+                </div>
+            </div>
+            <!--Redes Sociales -->
+            <!--Íconos obtenidos de ICONS8, otro lugar es lottiefiles-->
+            <div class="RedesSociales" id="RedesSociales">
+                <div class="socials">
+                    <a href="https://www.linkedin.com/in/gabriela-vidales/" target="_blank"><img src="icons/icons8-linkedin-100.png" alt="LinkedIN" loading="lazy" class="sociocon"></a>
+                </div>
+                <div class="socials">
+                    <a href="https://github.com/GabrielaVidales?tab=repositories" target="_blank"><img src="icons/icons8-github-100.png" alt="LinkedIN" loading="lazy" class="sociocon"></a>
+                </div>
+                <div class="socials">
+                    <a href="https://www.facebook.com/profile.php?id=61557391482727" target="_blank"><img src="icons/icons8-facebook-nuevo-100.png" alt="LinkedIN" loading="lazy" class="sociocon"></a>
+                </div>
+            </div>
+        <!--Link para hablar con alguien en WhatsApp: https://wa.me/529841282125-->
+        <!--Teléfono de Nancy Salazar: 47711786634-->
+        </section>
+    <!--More about me-->
+        <section class="more-about">
+            <h2>My Bio</h2>
+            <p><b>Certified in data analysis and genomics</b>, with <b>extensive experience in programming, machine learning, complex system simulation, and data analysis</b>. <b>Proficient in Python, C++, LaTeX, Excel, GeoGebra, and various others programs</b>. Proactive leader in multiple research projects, showcasing exceptional group management, problem-solving, and analytical skills. Notable projects include:                
+            <b><i>"Computational Simulation: Analysis of Structural Changes in Athermal Crystals" </i></b>
+            <b><i>"Development of a Rover for Agroindustrial Tasks" </i></b>
+            <b><i>"Implementation of Intelligent Systems with AI Techniques for Residential Energy Savings" </i></b>
+            These projects were conducted under the guidance of distinguished researchers from the Autonomous University of Yucatán and the Secretariat of Research, Innovation, and Higher Education of the state. Completed paid summer internships at <B>Soluciones Acústicas S.A. de C.V.</B> and <b>LS Learning Studio</b>, serving as an engineering assistant and mentor of native teenagers English speakers, respectively. Participated in <b>Physics, Chemistry, and Math Olympiads adjudicated by the National Academy of Sciences</b>, achieving notable accomplishments. Additionally, proud to represent my country as one of the four Mexican delegates at the 2022 virtual <b>National Youth Science Camp (NYSCamp)</b>, a STEAM program sponsored by the <b>United States Embassy</b>. Proficient in English, skilled in public speaking, and capable of effectively teaching. Believes in the progression of humanity through the dissemination of knowledge and love for others. <b>Speaker in global outreach events</b> such as <b><i>Night of the Stars 2022 and 2023</i></b>, and <b><i>Eclipse 2023 and 2024</i></b>, as well as has conducted school primary visits throughout the state. Proudly <b>trained students from Preparatory School Two of UADY</b> for over four years, preparing them for the State Chemistry and Physics Olympiads.</p>
+        </section>
+
+    <!--Skills-->
+        <section class="skills" id="skills">
+            <h2 class="skilss-header">My Top Skills</h2>
+            <div class="skills-wrapper">
+                <div class="first animate__animated animate__pulse">
+                    <img src="images/python.png" alt="Python" loading="lazy" class="icon icon-card">
+                    <img src="images/C++.png" alt="C++" loading="lazy" class="icon icon-card">
+                    <img src="images/Arduino_Logo_Registered.svg.png" alt="Arduino" loading="lazy" class="icon icon-card">
+                    <img src="images/ESP32.jpg" alt="ESP32" loading="lazy" class="icon icon-card">
+                    <img src="images/Fusion360.png" alt="Fusion360" loading="lazy" class="icon icon-card">
+                </div>
+                <div class="second animate__animated animate__pulse">
+                    <img src="images/AutoCad.png" alt="AutoCAD" loading="lazy" class="icon icon-card">
+                    <img src="images/HTML.png" alt="HTML5" loading="lazy" class="icon icon-card">
+                    <img src="images/icons8-css3.svg" alt="CSS3" loading="lazy" class="icon icon-card">
+                    <img src="images/icons8-javascript.svg" alt="JavaScript" loading="lazy" class="icon icon-card">
+                    <img src="images/GeoGebra.png" alt="GeoGebra" loading="lazy" class="icon icon-card">
+                </div>
+            </div>
+        </section>
+
+    <!--Proyectos-->
+        <section class="projects" id="projects">
+            <h2 class="projects-title"> Some of My Recent Projects</h2>
+            <div class="projects-container">
+                <div class="project-container project-card">
+                    <h3 class="project-title">Pinterest Home Clone</h3>
+                    <img src="images/VistaPrevia.png" alt="" loading="lazy" class="project-pic">
+                    <p class="project-details">Created purely with HTML5 and CSS3</p>
+                    <a href="#" target="_blank" class="project-link">Check it out!</a>
+                </div>
+            </div>
+            <div class="projects-container">
+                <div class="project-container project-card">
+                    <h3 class="project-title">Project 2</h3>
+                    <img src="images/work.jpg" alt="" loading="lazy" class="project-pic">
+                    <p class="project-details">Work in progress...</p>
+                    <a href="#" target="_blank" class="project-link">Check it out!</a>
+                </div>
+            </div>
+            <div class="projects-container">
+                <div class="project-container project-card">
+                    <h3 class="project-title">Project 3</h3>
+                    <img src="images/work.jpg" alt="" loading="lazy" class="project-pic">
+                    <p class="project-details">Work in progress...</p>
+                    <a href="#" target="_blank" class="project-link">Check it out!</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!--SCROLL BUTTON-->
+    <i class="scroll-up" id="scroll-up">
+        <img src="icons/up-arrow.gif" class="sociocon up-arrow">
+    </i>
+    
+    <!--FRASE-->
+    <footer> 
+        <section class="Frase" id="Frase">
+            <p> <i>"We are all in the gutter, but some of us are looking at the stars"</i> — Oscar Wilde</p>
+        </section>
+    </footer>
+
+    <!--JavaScript, lo vinculamos con nuestro código-->
+    <script src="app.js"></script>
+
+
+    <!--Video de FONDO-->
+    <video autoplay muted loop id="video-background">
+        <source src="images/FondoEspacial.mp4" type="video/mp4">
+    </video>
+    <!--Ion Icons Scripts, nos lo pasó la maestra, la otra vez usamos de Google Icons-->
+    <script type="module" src="http://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="http://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
